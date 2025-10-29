@@ -1,1 +1,66 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+    <div class="auth-container">
+        <div id="login-panel" class="auth-panel active">
+            <h2>Portal Login</h2>
+            <form id="login-form">
+                <input type="text" placeholder="Student ID or Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="blue-btn">Log in</button>
+            </form>
+            <p class="auth-links">
+                <a href="#" onclick="showPanel('forgot-password-panel')">Forgot Password?</a> | 
+                <a href="#" onclick="showPanel('register-panel')">Create New Account</a>
+            </p>
+        </div>
+
+        <div id="register-panel" class="auth-panel hidden">
+            <h2>Create New Account</h2>
+            <form id="register-form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email address" required>
+                <input type="password" placeholder="New Password" required>
+                <button type="submit" class="blue-btn">Register</button>
+            </form>
+            <p class="auth-links">
+                <a href="#" onclick="showPanel('login-panel')">Back to Log in</a>
+            </p>
+        </div>
+
+        <div id="forgot-password-panel" class="auth-panel hidden">
+            <h2>Forgot Password</h2>
+            <form id="forgot-form">
+                <p>Enter your email to receive a password reset code.</p>
+                <input type="email" placeholder="Email address" required>
+                <button type="submit" class="blue-btn">Send Reset Code</button>
+            </form>
+            <p class="auth-links">
+                <a href="#" onclick="showPanel('login-panel')">Back to Log in</a>
+            </p>
+        </div>
+
+        <div id="confirm-panel" class="auth-panel hidden">
+            <h2>Email Confirmation</h2>
+            <p>A 6-digit confirmation code has been sent to your email.</p>
+            <form id="confirm-form">
+                <input type="text" placeholder="Confirmation Code" maxlength="6" required>
+                <button type="submit" class="blue-btn">Confirm Code</button>
+            </form>
+            <p class="auth-links">
+                <a href="#" onclick="resendCode()">Resend Code</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>
 
