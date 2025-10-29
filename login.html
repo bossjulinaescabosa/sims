@@ -73,6 +73,22 @@
                 <a href="#" data-view="login">Back to Login</a>
             </div>
         </div>
+
+        <div id="verify-view" class="auth-view hidden">
+            <form id="verify-form" class="auth-form">
+                <p class="instruction">We have sent a 6-digit verification code to <strong id="verify-email-display">your email</strong>. Please enter the code below to complete your registration.</p>
+                <div class="form-group">
+                    <label for="verify-code">Verification Code:</label>
+                    <input type="text" id="verify-code" required placeholder="Enter 6-digit code">
+                </div>
+                <button type="submit" class="blue-btn full-width">VERIFY ACCOUNT</button>
+            </form>
+            <div class="auth-links">
+                <a href="#" data-view="login">Back to Login</a>
+                <span>|</span>
+                <a href="#" id="resend-code-link">Resend Code</a>
+            </div>
+        </div>
     </div>
     
     <script src="login.js"></script>
