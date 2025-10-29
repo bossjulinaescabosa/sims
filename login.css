@@ -3,18 +3,17 @@
 /* ==================================== */
 :root {
     /* Variables for colors */
-    --primary-color: #007bff; /* Blue for primary actions/buttons */
-    --secondary-color: #6c757d; /* Gray for secondary text */
-    --light-bg: #f4f7f9; /* Light mode background */
-    --light-card-bg: #ffffff; /* Light mode form background */
-    --dark-bg: #1e293b; /* Dark mode background */
-    --dark-card-bg: #2d3748; /* Dark mode form background */
-    --text-color-light: #333; /* Default text color */
-    --text-color-dark: #f0f0f0; /* Dark mode text color */
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --light-bg: #f4f7f9;
+    --light-card-bg: #ffffff;
+    --dark-bg: #1e293b;
+    --dark-card-bg: #2d3748;
+    --text-color-light: #333;
+    --text-color-dark: #f0f0f0;
 }
 
 body {
-    /* Reset and general styling */
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -34,12 +33,12 @@ body {
     color: var(--text-color-dark);
 }
 
-/* Auth Container Centering - Use Flexbox to center the form on the page */
+/* Auth Container Centering - Gumagamit ng Flexbox para isentro ang form */
 .auth-container {
     display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    min-height: 100vh; /* Ensure it covers the whole viewport height */
+    justify-content: center; /* Centering Horizontal */
+    align-items: center; /* Centering Vertical */
+    min-height: 100vh; 
     padding: 20px;
     box-sizing: border-box;
 }
@@ -48,41 +47,38 @@ body {
 /* 2. Form Card and Header Styles       */
 /* ==================================== */
 .auth-view {
-    /* Base styling for the form card */
     background-color: var(--light-card-bg);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 420px; /* Pantay at maayos na lapad ng form */
+    max-width: 420px; 
     margin-bottom: 20px;
     box-sizing: border-box;
 }
 
-/* Dark Mode card styling */
 .dark-mode .auth-view {
     background-color: var(--dark-card-bg);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Header (Logo, Title, Toggle) Alignment */
 .auth-header {
-    /* Layout para sa Logo, Title, at Dark Mode Toggle */
     display: flex;
-    justify-content: space-between; /* Itulak ang Branding at Toggle sa magkabilang dulo */
-    align-items: center; /* Pantayin ang items sa gitna (vertically) */
-    margin-bottom: 25px; /* Spacing sa ilalim ng header */
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 25px; 
 }
 
 .header-branding {
-    /* Layout para sa Logo at Title */
     display: flex;
     align-items: center;
 }
 
 .auth-logo {
-    width: 45px; /* Maayos na laki ng logo */
+    width: 45px; 
     height: auto;
-    margin-right: 12px; /* Spacing sa pagitan ng Logo at Title */
+    margin-right: 12px; 
 }
 
 #auth-header {
@@ -91,35 +87,29 @@ body {
     font-weight: 600;
 }
 
-/* View Title (Ito ang in-update/idinagdag) */
 .view-title {
     font-size: 1.5em;
     font-weight: 700;
     margin-top: 0;
-    margin-bottom: 25px; /* Dinagdagan ang spacing sa ilalim ng title */
+    margin-bottom: 25px; 
     color: var(--primary-color);
     text-align: center;
 }
 
-/* Dark Mode Title Color */
 .dark-mode .view-title {
     color: var(--text-color-dark); 
 }
 
 /* ==================================== */
-/* 3. Form Elements and Spacing (Key for Alignment) */
+/* 3. Form Elements and Spacing (Alignment) */
 /* ==================================== */
-.auth-form {
-    display: block;
-}
-
 .form-group {
-    margin-bottom: 20px; /* Pantay na spacing sa pagitan ng bawat field group */
+    margin-bottom: 20px; 
 }
 
 .form-group label {
-    display: block; /* Para ang label ay nasa itaas ng input */
-    margin-bottom: 8px; /* Maayos na spacing sa pagitan ng label at input */
+    display: block; 
+    margin-bottom: 8px; 
     font-weight: 600;
     font-size: 0.95em;
 }
@@ -129,14 +119,9 @@ body {
     padding: 12px 10px;
     border: 1px solid #ccc;
     border-radius: 6px;
-    box-sizing: border-box; /* Mahalaga para hindi lumabas sa width ang padding */
+    box-sizing: border-box; 
     font-size: 1em;
     transition: border-color 0.3s;
-}
-
-.form-group input:focus {
-    border-color: var(--primary-color);
-    outline: none;
 }
 
 /* Dark Mode input styling */
@@ -145,11 +130,7 @@ body {
     border-color: #6c757d;
     color: var(--text-color-dark);
 }
-.dark-mode input::placeholder {
-    color: #a0aec0;
-}
 
-/* Button Styling (blue-btn) */
 .blue-btn {
     background-color: var(--primary-color);
     color: white;
@@ -162,15 +143,16 @@ body {
     transition: background-color 0.2s;
 }
 
-.blue-btn:hover {
-    background-color: #0056b3;
-}
-
 .full-width {
     width: 100%;
 }
 
-/* Instructions and Links */
+.auth-links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
 .instruction {
     margin-top: 0;
     margin-bottom: 20px;
@@ -180,104 +162,25 @@ body {
     font-size: 0.9em;
     line-height: 1.5;
 }
-/* Dark Mode Instruction Background */
+
 .dark-mode .instruction {
     background-color: rgba(0, 123, 255, 0.15);
 }
 
-.auth-links {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.9em;
-}
-
-.auth-links a {
-    color: var(--primary-color);
-    text-decoration: none;
-    padding: 0 5px; /* Spacing sa palibot ng link */
-    transition: color 0.2s;
-}
-
-.auth-links a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-.auth-links span {
-    color: var(--secondary-color);
-}
-
 /* ==================================== */
-/* 4. Dark Mode Toggle Styling          */
-/* ==================================== */
-.dark-mode-toggle {
-    position: relative;
-    display: inline-block;
-    width: 50px; /* Lapad ng toggle switch */
-    height: 24px; /* Taas ng toggle switch */
-}
-
-.dark-mode-toggle input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 24px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: var(--primary-color);
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-/* ==================================== */
-/* 5. Utility & Responsive Classes      */
+/* 4. Utility & Responsive Classes      */
 /* ==================================== */
 .hidden {
-    /* Ito ang gagamitin ng JavaScript para itago ang view */
     display: none !important;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 500px) {
     .auth-container {
-        /* Tanggalin ang vertical centering sa maliliit na screen para hindi mag-squish */
         align-items: flex-start; 
     }
     .auth-view {
         padding: 20px;
         margin: 10px;
-        margin-top: 50px; /* Dagdag space sa taas */
-    }
-    #auth-header {
-        font-size: 1.5em;
-    }
-    .auth-header {
-        margin-bottom: 20px;
+        margin-top: 50px; 
     }
 }
