@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // --- 0. MOCK SESSION CHECK & REDIRECT (Security Layer) ---
+    const mockLoggedIn = sessionStorage.getItem('isLoggedIn');
+    
+    if (mockLoggedIn !== 'true') {
+        // Redirect to login page if not logged in
+        window.location.href = 'login.html';
+        return; // Stop executing dashboard script if no session
+    }
+
+    // Tiyakin na ang sessionStorage ay nalilinis sa logout para hindi ito mag-persist
+    // at hindi ma-access ang dashboard sa susunod na refresh.
+
     const sidebar = document.getElementById('sidebar');
     const navItems = sidebar.querySelectorAll('li');
     const contentSections = document.querySelectorAll('.entity-section');
@@ -49,19 +62,12 @@ document.addEventListener('DOMContentLoaded', function() {
             contentSections.forEach(section => {
                 section.classList.toggle('hidden', section.id !== targetId);
             });
-
-            // Close mobile menu if open
-            if (window.innerWidth <= 900) {
-                sidebar.classList.remove('open');
-            }
+            
+            // Scroll to the top of the main content on section switch (especially for mobile)
+            document.getElementById('content').scrollTo({ top: 0, behavior: 'smooth' });
         });
     });
     
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        sidebar.classList.toggle('open');
-    });
-
-
     // --- 3. Modal & Form Handling (Add/Edit) ---
     document.querySelectorAll('.new-record-btn, .edit-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -110,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const isEditing = modalTitle.textContent.includes('EDIT');
             const actionType = isEditing ? "UPDATED" : "ADDED";
 
-            alert(`✅ SUCCESS! New/Updated data for ${entityName} has been ${actionType} and reflected in the table.`);
+            alert(`✅ SUCCESS! New/Updated data for ${entityName} has been ${actionType} and is ready to be stored.`);
             
             modal.style.display = 'none'; 
         });
@@ -126,8 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const rows = table.getElementsByTagName('tr');
         
         for (let i = 1; i < rows.length; i++) { 
-            let rowText = rows[i].textContent.toUpperCase();
-            rows[i].style.display = (rowText.indexOf(filter) > -1) ? "" : "none";
+            if (!rows[i].querySelector('.no-data-row')) {
+                 let rowText = rows[i].textContent.toUpperCase();
+                 rows[i].style.display = (rowText.indexOf(filter) > -1) ? "" : "none";
+            } else {
+                 rows[i].style.display = (filter.length === 0) ? "" : "none";
+            }
         }
     }
 
@@ -143,13 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 5. GLOBAL DASHBOARD SEARCH (Mock) ---
-    const mockData = [
-        { type: "STUDENT", name: "Juan Dela Cruz", detail: "ID: S001, Program: BSIT" },
-        { type: "COURSE", name: "Web Development (C301)", detail: "Credits: 3" },
-        { type: "INSTRUCTOR", name: "Dr. Dela Rosa", detail: "Department: IT" },
-    ];
-
+    // --- 5. GLOBAL DASHBOARD SEARCH (MOCK - No Data) ---
     const performGlobalSearch = () => {
         const query = searchInputGlobal.value.toLowerCase().trim();
         searchResultsDiv.innerHTML = '<h3>Global Search Results</h3>';
@@ -160,21 +164,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const results = mockData.filter(item => 
-            item.name.toLowerCase().includes(query) || 
-            item.detail.toLowerCase().includes(query) || 
-            item.type.toLowerCase().includes(query)
-        );
-
-        if (results.length > 0) {
-            results.forEach(result => {
-                searchResultsDiv.innerHTML += `<div class="result-item"><strong>[${result.type}]</strong> ${result.name} - ${result.detail}</div>`;
-            });
-            searchResultsDiv.classList.remove('hidden');
-        } else {
-            searchResultsDiv.innerHTML += `<div class="result-item">No results found for "${query}".</div>`;
-            searchResultsDiv.classList.remove('hidden');
-        }
+        searchResultsDiv.innerHTML += `<div class="result-item">No records found for "${query}" in the database yet. Tables are currently empty.</div>`;
+        searchResultsDiv.classList.remove('hidden');
     };
 
     searchButtonGlobal.addEventListener('click', performGlobalSearch);
@@ -192,7 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- 6. Logout Redirect ---
     document.getElementById('logout-btn').addEventListener('click', function() {
         alert('Logging out...');
+        // Tiyakin na tinatanggal ang session flag sa logout
+        sessionStorage.removeItem('isLoggedIn'); 
         window.location.href = 'login.html';
     });
 });
-
