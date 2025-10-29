@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Form Submission Logic (MOCK) ---
     document.getElementById('login-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        // MOCK LOGIN: In a real app, authentication happens here.
+        // MOCK LOGIN
         alert('Login Successful! Redirecting to Dashboard...');
         
-        // SET MOCK SESSION FLAG KAPAG SUCCESSFUL ANG LOGIN
+        // SET MOCK SESSION FLAG
         sessionStorage.setItem('isLoggedIn', 'true'); 
         
         window.location.href = 'dashboard.html'; 
@@ -83,14 +83,14 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('register-form').addEventListener('submit', function(e) {
         e.preventDefault();
         const email = document.getElementById('reg-email').value;
-        const code = document.getElementById('reg-code').value;
+        const studentId = document.getElementById('reg-id').value;
         
-        if (code.length < 4) {
-             alert('Error: Please enter the valid confirmation code sent to ' + email + '. (Mock Code: 1234)');
-             return;
-        }
-        // MOCK REGISTER: Account created and confirmed.
-        alert('Account created and confirmed! Redirecting to Login...');
+        // MOCK REGISTER: Account created, announcement for verification code.
+        alert(`✅ SUCCESS! Account created for ${studentId}. 
+            \n\nVerification Code has been sent to ${email}. 
+            \n\n(MOCK CODE: 1234) Use the Login form now.`);
+        
+        // Pagkatapos mag-register, bumalik sa Login screen
         switchView('login');
     });
 
