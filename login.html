@@ -3,64 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Login - Student Portal</title>
+    <title id="page-title">Portal Login - Student Portal</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body class="light-mode">
-    <label class="dark-mode-toggle">
-        <input type="checkbox" id="dark-mode-switch-auth">
-        <span class="slider"></span>
-    </label>
-
     <div class="auth-container">
-        <div class="auth-card">
-            <img src="logo.png" alt="School Logo" class="auth-logo">
-            <h2 id="auth-header">Portal Login</h2>
-            
-            <div id="login-view" class="auth-view active">
-                <form id="login-form" class="auth-form">
-                    <input type="text" id="login-user" placeholder="Student ID or Email" required>
-                    <input type="password" id="login-pass" placeholder="Password" required>
-                    <button type="submit" class="blue-btn">Login to Portal</button>
-                </form>
-                <div class="auth-links">
-                    <a href="#" data-view="forgot">Forgot Password?</a>
-                    <a href="#" data-view="register">Need an account? Create New Account</a>
-                </div>
+        <header class="auth-header">
+            <div class="header-branding">
+                <img src="logo.png" alt="School Logo" class="auth-logo">
+                <h1 id="auth-header">Portal Login</h1>
             </div>
+            <label class="dark-mode-toggle">
+                <input type="checkbox" id="dark-mode-switch-auth">
+                <span class="slider"></span>
+            </label>
+        </header>
 
-            <div id="register-view" class="auth-view hidden">
-                <form id="register-form" class="auth-form">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" id="reg-email" placeholder="Valid School Email (for confirmation)" required>
-                    <input type="password" placeholder="Choose Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
-                    
-                    <div class="verification-box">
-                        <p>Verification Code will be sent to your email.</p>
-                        <input type="text" id="reg-code" placeholder="Enter Confirmation Code" required>
-                    </div>
-
-                    <button type="submit" class="blue-btn">Register and Login</button>
-                </form>
-                <div class="auth-links">
-                    <a href="#" data-view="login">Back to Login</a>
+        <div id="login-view" class="auth-view active">
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="username">Student ID / Email:</label>
+                    <input type="text" id="username" required placeholder="Enter your ID or Email">
                 </div>
-            </div>
-
-            <div id="forgot-view" class="auth-view hidden">
-                <form id="forgot-form" class="auth-form">
-                    <p>Enter your email to receive a password reset link.</p>
-                    <input type="email" placeholder="School Email Address" required>
-                    <button type="submit" class="blue-btn">Send Reset Link</button>
-                </form>
-                <div class="auth-links">
-                    <a href="#" data-view="login">Back to Login</a>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required placeholder="Enter your password">
                 </div>
+                <button type="submit" class="blue-btn full-width">LOGIN TO PORTAL</button>
+            </form>
+            <div class="auth-links">
+                <a href="#" data-view="forgot">Forgot Password?</a>
+                <span>|</span>
+                <a href="#" data-view="register">New Student? Register here</a>
             </div>
+        </div>
 
+        <div id="register-view" class="auth-view hidden">
+            <form id="register-form" class="auth-form">
+                <p class="instruction">Fill in your details to create a student account.</p>
+                <div class="form-group">
+                    <label for="reg-id">Student ID:</label>
+                    <input type="text" id="reg-id" required placeholder="Your Student ID (e.g., S001)">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Personal Email:</label>
+                    <input type="email" id="reg-email" required placeholder="Enter your Email">
+                </div>
+                <div class="form-group">
+                    <label for="reg-pass">Create Password:</label>
+                    <input type="password" id="reg-pass" required placeholder="Choose a secure password">
+                </div>
+                <button type="submit" class="blue-btn full-width">REGISTER ACCOUNT</button>
+            </form>
+            <div class="auth-links">
+                <a href="#" data-view="login">Already have an account? Login here</a>
+            </div>
+        </div>
+
+        <div id="forgot-view" class="auth-view hidden">
+            <form id="forgot-form" class="auth-form">
+                <p class="instruction">Enter your registered email to reset your password.</p>
+                <div class="form-group">
+                    <label for="forgot-email">Email:</label>
+                    <input type="email" id="forgot-email" required placeholder="Enter your registered email">
+                </div>
+                <button type="submit" class="blue-btn full-width">SEND RESET LINK</button>
+            </form>
+            <div class="auth-links">
+                <a href="#" data-view="login">Back to Login</a>
+            </div>
         </div>
     </div>
+    
     <script src="login.js"></script>
 </body>
 </html>
