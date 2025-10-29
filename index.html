@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Portal Dashboard - ERD Focused</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Student Portal Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body class="light-mode">
 
     <header>
         <div class="header-content">
-            <h1>🎓 Student Portal</h1>
+            <div class="portal-branding">
+                <img src="logo.png" alt="School Logo" class="portal-logo">
+                <span>🎓 Student Portal</span>
+            </div>
             <div class="header-actions">
                 <label class="dark-mode-toggle">
                     <input type="checkbox" id="dark-mode-switch">
@@ -27,16 +30,17 @@
             <div class="sidebar-content">
                 <ul>
                     <li data-entity="dashboard" class="active"><a href="#dashboard">📊 Dashboard</a></li>
-                    <li data-entity="student_profile"><a href="#student_profile">👤 STUDENT</a></li>
-                    <li data-entity="parent_guardian"><a href="#parent_guardian">👨‍👩‍👧 PARENT/G</a></li>
-                    <li data-entity="enrollment"><a href="#enrollment">📝 ENROLLMENT</a></li>
-                    <li data-entity="schedule"><a href="#schedule">⏰ SCHEDULE</a></li>
-                    <li data-entity="course_details"><a href="#course_details">📚 COURSE</a></li>
-                    <li data-entity="program_details"><a href="#program_details">🎯 PROGRAM</a></li>
-                    <li data-entity="department_info"><a href="#department_info">🏢 DEPARTMENT</a></li>
-                    <li data-entity="instructor_info"><a href="#instructor_info">👨‍🏫 INSTRUCTOR</a></li>
-                    <li data-entity="classroom_info"><a href="#classroom_info">🚪 CLASSROOM</a></li>
-                    <li data-entity="contact_records"><a href="#contact_records">📞 CONTACT</a></li>
+                    <li data-entity="student_profile"><a href="#student_profile">👤 STUDENT PROFILE</a></li>
+                    <li data-entity="parent_guardian"><a href="#parent_guardian">👨‍👩‍👧 PARENT/GUARDIAN</a></li>
+                    <li data-entity="enrollment"><a href="#enrollment">📝 ENROLLMENT RECORDS</a></li>
+                    <li data-entity="schedule"><a href="#schedule">⏰ CLASS SCHEDULES</a></li>
+                    <li data-entity="course_details"><a href="#course_details">📚 COURSE DETAILS</a></li>
+                    <li data-entity="program_details"><a href="#program_details">🎯 PROGRAM DETAILS</a></li>
+                    <li data-entity="department_info"><a href="#department_info">🏢 DEPARTMENT INFO</a></li>
+                    <li data-entity="instructor_info"><a href="#instructor_info">👨‍🏫 INSTRUCTOR INFO</a></li>
+                    <li data-entity="classroom_info"><a href="#classroom_info">🚪 CLASSROOM INFO</a></li>
+                    <li data-entity="contact_records"><a href="#contact_records">📞 CONTACT RECORDS</a></li>
+                    <li data-entity="about"><a href="#about">ℹ️ ABOUT PORTAL</a></li>
                 </ul>
             </div>
         </nav>
@@ -45,7 +49,7 @@
             <section id="dashboard" class="entity-section active">
                 <h2>📊 Dashboard & Announcements</h2>
                 <div class="search-box">
-                    <input type="text" id="dashboard-search" placeholder="Search data across entities...">
+                    <input type="text" id="dashboard-search" placeholder="Search announcements or global data...">
                     <button id="search-btn" class="blue-btn">Global Search</button>
                 </div>
                 <div id="search-results" class="search-results hidden">
@@ -53,20 +57,20 @@
                     <div class="result-item">No active search result.</div>
                 </div>
                 <div class="dashboard-widgets">
-                    <div class="widget"><h3>Next Class</h3><p>IT 301 (Web Dev) @ C-201</p></div>
-                    <div class="widget"><h3>Current Program</h3><p>BSIT (4 Years)</p></div>
+                    <div class="widget"><h3>Welcome</h3><p>Use the navigation to access all entity data tables.</p></div>
+                    <div class="widget"><h3>Project Focus</h3><p>Professional ERD-focused Student Portal interface.</p></div>
                 </div>
             </section>
 
             <section id="student_profile" class="entity-section hidden">
-                <h2>👤 STUDENT Records</h2>
+                <h2>👤 STUDENT PROFILE Records</h2>
                 <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="student-form">➕ Add New Student</button>
                     <div class="table-search-box">
                         <input type="text" placeholder="Search Students..." class="table-search-input" data-table-id="student-table">
+                        <button class="blue-btn search-table-btn">Search</button>
                     </div>
+                    <button class="blue-btn new-record-btn" data-form-id="student-form">➕ Add New Student</button>
                 </div>
-                
                 <div class="data-block table-container">
                     <table class="data-table" id="student-table">
                         <thead>
@@ -79,194 +83,58 @@
                     </table>
                 </div>
             </section>
-
+            
             <section id="parent_guardian" class="entity-section hidden">
                 <h2>👨‍👩‍👧 PARENT/GUARDIAN Records</h2>
-                <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="parent-form">➕ Add New Parent</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Parents..." class="table-search-input" data-table-id="parent-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="parent-table">
-                        <thead>
-                            <tr><th>Parent_ID (PK)</th><th>Father_Name</th><th>Mother_Name</th><th>Student_ID (FK)</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>P001</td><td>Ricardo Dela Cruz</td><td>Maria Dela Cruz</td><td>S001</td><td><button class="edit-btn" data-form-id="parent-form" data-id="P001">Edit</button></td></tr>
-                            <tr><td>P002</td><td>Jose Santos</td><td>Liza Santos</td><td>S002</td><td><button class="edit-btn" data-form-id="parent-form" data-id="P002">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Parents..." class="table-search-input" data-table-id="parent-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="parent-form">➕ Add New Parent</button></div>
+                <div class="data-block table-container"><table class="data-table" id="parent-table"><thead><tr><th>Parent_ID (PK)</th><th>Father_Name</th><th>Mother_Name</th><th>Student_ID (FK)</th><th>Actions</th></tr></thead><tbody><tr><td>P001</td><td>Ricardo</td><td>Maria</td><td>S001</td><td><button class="edit-btn" data-form-id="parent-form" data-id="P001">Edit</button></td></tr></tbody></table></div>
             </section>
-            
             <section id="enrollment" class="entity-section hidden">
-                <h2>📝 ENROLLMENT Records</h2>
-                 <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="enrollment-form">➕ Add New Enrollment</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Enrollments..." class="table-search-input" data-table-id="enrollment-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="enrollment-table">
-                        <thead>
-                            <tr><th>Enrollment_ID (PK)</th><th>Student_ID (FK)</th><th>Course_ID (FK)</th><th>Semester</th><th>Academic_Year</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>E001</td><td>S001</td><td>C301</td><td>First</td><td>2024-2025</td><td><button class="edit-btn" data-form-id="enrollment-form" data-id="E001">Edit</button></td></tr>
-                            <tr><td>E002</td><td>S001</td><td>M101</td><td>First</td><td>2024-2025</td><td><button class="edit-btn" data-form-id="enrollment-form" data-id="E002">Edit</button></td></tr>
-                            <tr><td>E003</td><td>S002</td><td>C301</td><td>First</td><td>2024-2025</td><td><button class="edit-btn" data-form-id="enrollment-form" data-id="E003">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                 <h2>📝 ENROLLMENT Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Enrollments..." class="table-search-input" data-table-id="enrollment-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="enrollment-form">➕ Add New Enrollment</button></div>
+                <div class="data-block table-container"><table class="data-table" id="enrollment-table"><thead><tr><th>Enrollment_ID (PK)</th><th>Student_ID (FK)</th><th>Course_ID (FK)</th><th>Semester</th><th>Academic_Year</th><th>Actions</th></tr></thead><tbody><tr><td>E001</td><td>S001</td><td>C301</td><td>First</td><td>2024-2025</td><td><button class="edit-btn" data-form-id="enrollment-form" data-id="E001">Edit</button></td></tr></tbody></table></div>
             </section>
-
             <section id="schedule" class="entity-section hidden">
-                <h2>⏰ SCHEDULE Records</h2>
-                 <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="schedule-form">➕ Add New Schedule</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Schedules..." class="table-search-input" data-table-id="schedule-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="schedule-table">
-                        <thead>
-                            <tr><th>Schedule_ID (PK)</th><th>Subject_ID (FK)</th><th>Instructor_ID (FK)</th><th>Classroom_ID (FK)</th><th>Time</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>SCH001</td><td>IT301</td><td>I005</td><td>CL01</td><td>M/W/F 1-3 PM</td><td><button class="edit-btn" data-form-id="schedule-form" data-id="SCH001">Edit</button></td></tr>
-                            <tr><td>SCH002</td><td>MATH1</td><td>I010</td><td>CL05</td><td>T/Th 8-10 AM</td><td><button class="edit-btn" data-form-id="schedule-form" data-id="SCH002">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2>⏰ CLASS SCHEDULES Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Schedules..." class="table-search-input" data-table-id="schedule-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="schedule-form">➕ Add New Schedule</button></div>
+                <div class="data-block table-container"><table class="data-table" id="schedule-table"><thead><tr><th>Schedule_ID (PK)</th><th>Subject_ID (FK)</th><th>Instructor_ID (FK)</th><th>Time</th><th>Actions</th></tr></thead><tbody><tr><td>SCH001</td><td>IT301</td><td>I005</td><td>M/W/F 1-3 PM</td><td><button class="edit-btn" data-form-id="schedule-form" data-id="SCH001">Edit</button></td></tr></tbody></table></div>
             </section>
-            
             <section id="course_details" class="entity-section hidden">
-                <h2>📚 COURSE Records</h2>
-                 <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="course-form">➕ Add New Course</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Courses..." class="table-search-input" data-table-id="course-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="course-table">
-                        <thead>
-                            <tr><th>Course_ID (PK)</th><th>Course_Name</th><th>Program_ID (FK)</th><th>Credits</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>C301</td><td>Web Development</td><td>BSIT</td><td>3</td><td><button class="edit-btn" data-form-id="course-form" data-id="C301">Edit</button></td></tr>
-                            <tr><td>M101</td><td>Discrete Mathematics</td><td>BSIT</td><td>3</td><td><button class="edit-btn" data-form-id="course-form" data-id="M101">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2>📚 COURSE DETAILS Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Courses..." class="table-search-input" data-table-id="course-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="course-form">➕ Add New Course</button></div>
+                <div class="data-block table-container"><table class="data-table" id="course-table"><thead><tr><th>Course_ID (PK)</th><th>Course_Name</th><th>Program_ID (FK)</th><th>Credits</th><th>Actions</th></tr></thead><tbody><tr><td>C301</td><td>Web Development</td><td>BSIT</td><td>3</td><td><button class="edit-btn" data-form-id="course-form" data-id="C301">Edit</button></td></tr></tbody></table></div>
             </section>
-
             <section id="program_details" class="entity-section hidden">
-                <h2>🎯 PROGRAM Records</h2>
-                <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="program-form">➕ Add New Program</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Programs..." class="table-search-input" data-table-id="program-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="program-table">
-                        <thead>
-                            <tr><th>Program_ID (PK)</th><th>Program_Name</th><th>Duration_Years</th><th>Department_ID (FK)</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>BSIT</td><td>BS in Information Technology</td><td>4</td><td>DEP01</td><td><button class="edit-btn" data-form-id="program-form" data-id="BSIT">Edit</button></td></tr>
-                            <tr><td>BSCS</td><td>BS in Computer Science</td><td>4</td><td>DEP01</td><td><button class="edit-btn" data-form-id="program-form" data-id="BSCS">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2>🎯 PROGRAM DETAILS Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Programs..." class="table-search-input" data-table-id="program-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="program-form">➕ Add New Program</button></div>
+                <div class="data-block table-container"><table class="data-table" id="program-table"><thead><tr><th>Program_ID (PK)</th><th>Program_Name</th><th>Duration_Years</th><th>Department_ID (FK)</th><th>Actions</th></tr></thead><tbody><tr><td>BSIT</td><td>BS in Info Tech</td><td>4</td><td>DEP01</td><td><button class="edit-btn" data-form-id="program-form" data-id="BSIT">Edit</button></td></tr></tbody></table></div>
             </section>
-            
             <section id="department_info" class="entity-section hidden">
-                <h2>🏢 DEPARTMENT Records</h2>
-                <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="dept-form">➕ Add New Department</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Departments..." class="table-search-input" data-table-id="dept-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="dept-table">
-                        <thead>
-                            <tr><th>Department_ID (PK)</th><th>Department_Name</th><th>Department_Head</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>DEP01</td><td>Information Technology</td><td>Dr. Reyes</td><td><button class="edit-btn" data-form-id="dept-form" data-id="DEP01">Edit</button></td></tr>
-                            <tr><td>DEP00</td><td>Administration</td><td>Dr. Cruz</td><td><button class="edit-btn" data-form-id="dept-form" data-id="DEP00">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2>🏢 DEPARTMENT INFO Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Departments..." class="table-search-input" data-table-id="dept-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="dept-form">➕ Add New Department</button></div>
+                <div class="data-block table-container"><table class="data-table" id="dept-table"><thead><tr><th>Department_ID (PK)</th><th>Department_Name</th><th>Department_Head</th><th>Actions</th></tr></thead><tbody><tr><td>DEP01</td><td>Information Technology</td><td>Dr. Reyes</td><td><button class="edit-btn" data-form-id="dept-form" data-id="DEP01">Edit</button></td></tr></tbody></table></div>
             </section>
-            
             <section id="instructor_info" class="entity-section hidden">
-                <h2>👨‍🏫 INSTRUCTOR Records</h2>
-                <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="instructor-form">➕ Add New Instructor</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Instructors..." class="table-search-input" data-table-id="instructor-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="instructor-table">
-                        <thead>
-                            <tr><th>Instructor_ID (PK)</th><th>First_Name</th><th>Last_Name</th><th>Department_ID (FK)</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>I005</td><td>Maria</td><td>Dela Rosa</td><td>DEP01</td><td><button class="edit-btn" data-form-id="instructor-form" data-id="I005">Edit</button></td></tr>
-                            <tr><td>I010</td><td>Joseph</td><td>Montes</td><td>DEP01</td><td><button class="edit-btn" data-form-id="instructor-form" data-id="I010">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2>👨‍🏫 INSTRUCTOR INFO Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Instructors..." class="table-search-input" data-table-id="instructor-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="instructor-form">➕ Add New Instructor</button></div>
+                <div class="data-block table-container"><table class="data-table" id="instructor-table"><thead><tr><th>Instructor_ID (PK)</th><th>First_Name</th><th>Last_Name</th><th>Department_ID (FK)</th><th>Actions</th></tr></thead><tbody><tr><td>I005</td><td>Maria</td><td>Dela Rosa</td><td>DEP01</td><td><button class="edit-btn" data-form-id="instructor-form" data-id="I005">Edit</button></td></tr></tbody></table></div>
             </section>
-            
             <section id="classroom_info" class="entity-section hidden">
-                <h2>🚪 CLASSROOM Records</h2>
-                <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="classroom-form">➕ Add New Classroom</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Classrooms..." class="table-search-input" data-table-id="classroom-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="classroom-table">
-                        <thead>
-                            <tr><th>Classroom_ID (PK)</th><th>Room_Number</th><th>Building_Name</th><th>Floor_Level</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>CL01</td><td>C-201</td><td>Centennial</td><td>2</td><td><button class="edit-btn" data-form-id="classroom-form" data-id="CL01">Edit</button></td></tr>
-                            <tr><td>CL05</td><td>A-101</td><td>Main Building</td><td>1</td><td><button class="edit-btn" data-form-id="classroom-form" data-id="CL05">Edit</button></td></tr>
-                        </tbody>
-                    </table>
-                </div>
+                <h2>🚪 CLASSROOM INFO Records</h2>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Classrooms..." class="table-search-input" data-table-id="classroom-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="classroom-form">➕ Add New Classroom</button></div>
+                <div class="data-block table-container"><table class="data-table" id="classroom-table"><thead><tr><th>Classroom_ID (PK)</th><th>Room_Number</th><th>Building_Name</th><th>Floor_Level</th><th>Actions</th></tr></thead><tbody><tr><td>CL01</td><td>C-201</td><td>Centennial</td><td>2</td><td><button class="edit-btn" data-form-id="classroom-form" data-id="CL01">Edit</button></td></tr></tbody></table></div>
             </section>
-
             <section id="contact_records" class="entity-section hidden">
                 <h2>📞 CONTACT Records</h2>
-                <div class="action-bar">
-                    <button class="blue-btn new-record-btn" data-form-id="contact-form">➕ Add New Contact</button>
-                    <div class="table-search-box">
-                        <input type="text" placeholder="Search Contacts..." class="table-search-input" data-table-id="contact-table">
-                    </div>
-                </div>
-                <div class="data-block table-container">
-                    <table class="data-table" id="contact-table">
-                        <thead>
-                            <tr><th>Contact_ID (PK)</th><th>Student_ID (FK)</th><th>Contact_Type</th><th>Contact_Detail</th><th>Actions</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>CT001</td><td>S001</td><td>Email</td><td>juan@school.edu.ph</td><td><button class="edit-btn" data-form-id="contact-form" data-id="CT001">Edit</button></td></tr>
-                            <tr><td>CT002</td><td>S001</td><td>Mobile</td><td>0917-000-0000</td><td><button class="edit-btn" data-form-id="contact-form" data-id="CT002">Edit</button></td></tr>
-                        </tbody>
-                    </table>
+                <div class="action-bar"><div class="table-search-box"><input type="text" placeholder="Search Contacts..." class="table-search-input" data-table-id="contact-table"><button class="blue-btn search-table-btn">Search</button></div><button class="blue-btn new-record-btn" data-form-id="contact-form">➕ Add New Contact</button></div>
+                <div class="data-block table-container"><table class="data-table" id="contact-table"><thead><tr><th>Contact_ID (PK)</th><th>Student_ID (FK)</th><th>Contact_Type</th><th>Contact_Detail</th><th>Actions</th></tr></thead><tbody><tr><td>CT001</td><td>S001</td><td>Email</td><td>juan@school.edu.ph</td><td><button class="edit-btn" data-form-id="contact-form" data-id="CT001">Edit</button></td></tr></tbody></table></div>
+            </section>
+
+            <section id="about" class="entity-section hidden">
+                <h2>ℹ️ About The Portal</h2>
+                <div class="info-block">
+                    <h3>Project Overview</h3>
+                    <p>This Student Portal interface is a demonstration project focused on illustrating a robust and professional front-end design, specifically structured around a relational database (ERD) model with 10 core entities.</p>
                 </div>
             </section>
             
@@ -291,130 +159,20 @@
                     </form>
                     
                     <form id="parent-form" class="entity-form grid-form hidden">
-                        <label for="parent_id_form"><strong>Parent_ID (PK):</strong></label>
-                        <input type="text" id="parent_id_form" value="" placeholder="e.g., P003">
-                        <hr>
-                        <label for="father_name_form">Father_Name:</label>
-                        <input type="text" id="father_name_form" value="">
-                        <label for="mother_name_form">Mother_Name:</label>
-                        <input type="text" id="mother_name_form" value="">
-                        <label for="student_id_parent_fk_form">Student_ID (FK):</label>
-                        <input type="text" id="student_id_parent_fk_form" value="">
+                        <label for="parent_id_form">Parent_ID (PK):</label><input type="text" id="parent_id_form" placeholder="P003">
+                        <label for="father_name_form">Father_Name:</label><input type="text" id="father_name_form">
+                        <label for="student_id_parent_fk_form">Student_ID (FK):</label><input type="text" id="student_id_parent_fk_form">
                         <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Parent Details</button></div>
-                    </form>
-                    
-                    <form id="enrollment-form" class="entity-form grid-form hidden">
-                        <label for="enrollment_id_form"><strong>Enrollment_ID (PK):</strong></label>
-                        <input type="text" id="enrollment_id_form" value="" placeholder="e.g., E004">
-                        <hr>
-                        <label for="enroll_student_id_form">Student_ID (FK):</label>
-                        <input type="text" id="enroll_student_id_form" value="">
-                        <label for="enroll_course_id_form">Course_ID (FK):</label>
-                        <input type="text" id="enroll_course_id_form" value="">
-                        <label for="semester_form">Semester:</label>
-                        <input type="text" id="semester_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Enrollment Record</button></div>
-                    </form>
-
-                    <form id="schedule-form" class="entity-form grid-form hidden">
-                        <label for="schedule_id_form"><strong>Schedule_ID (PK):</strong></label>
-                        <input type="text" id="schedule_id_form" value="" placeholder="e.g., SCH003">
-                        <hr>
-                        <label for="sched_subject_id_form">Subject_ID (FK):</label>
-                        <input type="text" id="sched_subject_id_form" value="">
-                        <label for="sched_instructor_id_form">Instructor_ID (FK):</label>
-                        <input type="text" id="sched_instructor_id_form" value="">
-                        <label for="sched_classroom_id_form">Classroom_ID (FK):</label>
-                        <input type="text" id="sched_classroom_id_form" value="">
-                        <label for="time_form">Time:</label>
-                        <input type="text" id="time_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Schedule Record</button></div>
-                    </form>
-                    
-                    <form id="course-form" class="entity-form grid-form hidden">
-                        <label for="course_id_form"><strong>Course_ID (PK):</strong></label>
-                        <input type="text" id="course_id_form" value="" placeholder="e.g., IT401">
-                        <hr>
-                        <label for="course_name_form">Course_Name:</label>
-                        <input type="text" id="course_name_form" value="">
-                        <label for="course_credits_form">Credits:</label>
-                        <input type="number" id="course_credits_form" value="">
-                        <label for="course_program_id_form">Program_ID (FK):</label>
-                        <input type="text" id="course_program_id_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Course Details</button></div>
-                    </form>
-
-                    <form id="program-form" class="entity-form grid-form hidden">
-                        <label for="pgm_id_form"><strong>Program_ID (PK):</strong></label>
-                        <input type="text" id="pgm_id_form" value="" placeholder="e.g., BSED">
-                        <hr>
-                        <label for="pgm_name_form">Program_Name:</label>
-                        <input type="text" id="pgm_name_form" value="">
-                        <label for="duration_years_form">Duration_Years:</label>
-                        <input type="number" id="duration_years_form" value="">
-                        <label for="dept_id_form">Department_ID (FK):</label>
-                        <input type="text" id="dept_id_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Program Details</button></div>
-                    </form>
-                    
-                    <form id="dept-form" class="entity-form grid-form hidden">
-                        <label for="dept_id_pk_form"><strong>Department_ID (PK):</strong></label>
-                        <input type="text" id="dept_id_pk_form" value="" placeholder="e.g., DEP02">
-                        <hr>
-                        <label for="dept_name_form">Department_Name:</label>
-                        <input type="text" id="dept_name_form" value="">
-                        <label for="dept_head_form">Department_Head:</label>
-                        <input type="text" id="dept_head_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Department Details</button></div>
-                    </form>
-                    
-                    <form id="instructor-form" class="entity-form grid-form hidden">
-                        <label for="inst_id_form"><strong>Instructor_ID (PK):</strong></label>
-                        <input type="text" id="inst_id_form" value="" placeholder="e.g., I011">
-                        <hr>
-                        <label for="inst_fn_form">First_Name:</label>
-                        <input type="text" id="inst_fn_form" value="">
-                        <label for="inst_ln_form">Last_Name:</label>
-                        <input type="text" id="inst_ln_form" value="">
-                        <label for="inst_dept_id_form">Department_ID (FK):</label>
-                        <input type="text" id="inst_dept_id_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Instructor Details</button></div>
-                    </form>
-                    
-                    <form id="classroom-form" class="entity-form grid-form hidden">
-                        <label for="class_id_form"><strong>Classroom_ID (PK):</strong></label>
-                        <input type="text" id="class_id_form" value="" placeholder="e.g., CL06">
-                        <hr>
-                        <label for="room_num_form">Room_Number:</label>
-                        <input type="text" id="room_num_form" value="">
-                        <label for="bldg_name_form">Building_Name:</label>
-                        <input type="text" id="bldg_name_form" value="">
-                        <label for="floor_lvl_form">Floor_Level:</label>
-                        <input type="text" id="floor_lvl_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Classroom Details</button></div>
-                    </form>
-
-                    <form id="contact-form" class="entity-form grid-form hidden">
-                        <label for="contact_id_form"><strong>Contact_ID (PK):</strong></label>
-                        <input type="text" id="contact_id_form" value="" placeholder="e.g., CT003">
-                        <hr>
-                        <label for="contact_student_id_form">Student_ID (FK):</label>
-                        <input type="text" id="contact_student_id_form" value="">
-                        <label for="contact_type_form">Contact_Type:</label>
-                        <input type="text" id="contact_type_form" value="">
-                        <label for="contact_detail_form">Contact_Detail:</label>
-                        <input type="text" id="contact_detail_form" value="">
-                        <div class="form-actions full-width"><button type="submit" class="blue-btn">Save Contact Record</button></div>
                     </form>
                 </div>
             </div>
-            </main>
+        </main>
     </div>
 
     <footer>
         <p>&copy; 2024 Student Portal Project. Professional & Clean Design.</p>
     </footer>
 
-    <script src="portal.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
