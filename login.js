@@ -82,13 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('register-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        const email = document.getElementById('reg-email').value;
-        const studentId = document.getElementById('reg-id').value;
+        // MOCK REGISTER: Account created. (No mention of verification code)
         
-        // MOCK REGISTER: Account created, announcement for verification code.
-        alert(`✅ SUCCESS! Account created for ${studentId}. 
-            \n\nVerification Code has been sent to ${email}. 
-            \n\n(MOCK CODE: 1234) Use the Login form now.`);
+        // Hindi na kailangan kunin ang email/ID
+        
+        alert('✅ SUCCESS! Account successfully created. You may now log in.');
         
         // Pagkatapos mag-register, bumalik sa Login screen
         switchView('login');
