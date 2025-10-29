@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal Dashboard - ERD Focused</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+
+    <header>
+        <div class="header-content">
+            <h1>🎓 Student Portal</h1>
+            <div class="header-actions">
+                <label class="dark-mode-toggle">
+                    <input type="checkbox" id="dark-mode-switch">
+                    <span class="slider"></span>
+                </label>
+                <button id="logout-btn" class="blue-btn">Logout</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <nav id="sidebar">
+            <button id="menu-toggle" class="menu-toggle-btn">☰</button>
+            <div class="sidebar-content">
+                <ul>
+                    <li data-entity="dashboard" class="active"><a href="#dashboard">📊 Dashboard</a></li>
+                    <li data-entity="student_profile"><a href="#student_profile">👤 STUDENT</a></li>
+                    <li data-entity="parent_guardian"><a href="#parent_guardian">👨‍👩‍👧 PARENT/GUARDIAN</a></li>
+                    <li data-entity="enrollment"><a href="#enrollment">📝 ENROLLMENT</a></li>
+                    <li data-entity="schedule"><a href="#schedule">⏰ SCHEDULE</a></li>
+                    <li data-entity="course_details"><a href="#course_details">📚 COURSE</a></li>
+                    <li data-entity="program_details"><a href="#program_details">🎯 PROGRAM</a></li>
+                    <li data-entity="department_info"><a href="#department_info">🏢 DEPARTMENT</a></li>
+                    <li data-entity="instructor_info"><a href="#instructor_info">👨‍🏫 INSTRUCTOR</a></li>
+                    <li data-entity="classroom_info"><a href="#classroom_info">🚪 CLASSROOM</a></li>
+                    <li data-entity="contact_records"><a href="#contact_records">📞 CONTACT</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main id="content">
+            <section id="dashboard" class="entity-section active">
+                <h2>📊 Dashboard & Announcements</h2>
+                <div class="search-box">
+                    <input type="text" id="dashboard-search" placeholder="Search data across entities...">
+                    <button id="search-btn" class="blue-btn">Search</button>
+                </div>
+                <div id="search-results" class="search-results hidden">
+                    <h3>Search Results</h3>
+                    <div class="result-item">No active search result.</div>
+                </div>
+                <div class="dashboard-widgets">
+                    <div class="widget"><h3>Next Class</h3><p>IT 301 (Web Dev) @ C-201</p></div>
+                    <div class="widget"><h3>Current Program</h3><p>BSIT (4 Years)</p></div>
+                </div>
+            </section>
+
+            <section id="student_profile" class="entity-section hidden">
+                <h2>👤 STUDENT Entity Details</h2>
+                <div class="profile-card">
+                    <div class="profile-picture">
+                        <img id="user-photo" src="path/to/your/image.jpg" alt="Student Profile Picture">
+                        <p class="photo-note">Attribute Placeholder: **Student_Photo**</p>
+                    </div>
+                    <div class="profile-details">
+                        <p><strong>Primary Key:</strong> <span class="pk-value">S001</span> (Student_ID)</p>
+                        <hr>
+                        <p><strong>Full Name:</strong> Juan Dela Cruz (First_Name, Middle_Name, Last_Name)</p>
+                        <p><strong>Demographics:</strong> 20 / Male (Age, Gender, Date_of_Birth)</p>
+                        <p><strong>Address:</strong> 123 Main St, Manila (Address)</p>
+                        <p><strong>Contact:</strong> 0917-000-0000 / juan@school.edu.ph (Contact_Number, Email)</p>
+                        <p><strong>Foreign Key:</strong> BSIT (Program_ID)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="parent_guardian" class="entity-section hidden">
+                <h2>👨‍👩‍👧 PARENT/GUARDIAN Entity</h2>
+                <div class="data-block">
+                    <p><strong>Primary Key:</strong> P001 (Parent_ID)</p>
+                    <p><strong>Attributes:</strong></p>
+                    <ul>
+                        <li>Father's Name: Ricardo Dela Cruz</li>
+                        <li>Mother's Name: Maria Dela Cruz</li>
+                        <li>Guardian's Name: N/A</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="enrollment" class="entity-section hidden">
+                <h2>📝 ENROLLMENT Entity</h2>
+                <div class="data-block">
+                    <p><strong>Primary Key:</strong> E001 (Enrollment_ID)</p>
+                    <p><strong>Attributes:</strong></p>
+                    <ul>
+                        <li><strong>Foreign Keys (FK):</strong> Student_ID, Course_ID, Subject_ID, Instructor_ID</li>
+                        <li><strong>Semester:</strong> First</li>
+                        <li><strong>Academic Year:</strong> 2024-2025</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="schedule" class="entity-section hidden">
+                <h2>⏰ SCHEDULE Entity</h2>
+                <div class="data-block">
+                    <p><strong>Primary Key:</strong> SCH001 (Schedule_ID)</p>
+                    <p><strong>Attributes:</strong></p>
+                    <ul>
+                        <li><strong>Foreign Keys (FK):</strong> Subject_ID, Instructor_ID, Classroom_ID</li>
+                        <li><strong>Time:</strong> Mon/Wed/Fri 1:00 PM - 3:00 PM</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="course_details" class="entity-section hidden">
+                <h2>📚 COURSE Entity</h2>
+                <div class="data-block">
+                    <p><strong>Primary Key:</strong> C301 (Course_ID)</p>
+                    <p><strong>Attributes:</strong></p>
+                    <ul>
+                        <li><strong>Course Name:</strong> Web Development</li>
+                        <li><strong>Description:</strong> Introduction to front-end and back-end web technologies.</li>
+                        <li><strong>Credits:</strong> 3 units</li>
+                        <li><strong>Foreign Key (FK):</strong> Program_ID (BSIT)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="program_details" class="entity-section hidden">
+                <h2>🎯 PROGRAM Entity</h2>
+                <div class="data-block"><p>Attributes: Program_ID (PK), Program_Name, Duration_Years, Department_ID (FK)</p></div>
+            </section>
+            
+            <section id="department_info" class="entity-section hidden">
+                <h2>🏢 DEPARTMENT Entity</h2>
+                <div class="data-block"><p>Attributes: Department_ID (PK), Department_Name, Department_Head, Office_Location</p></div>
+            </section>
+            
+            <section id="instructor_info" class="entity-section hidden">
+                <h2>👨‍🏫 INSTRUCTOR Entity</h2>
+                <div class="data-block"><p>Attributes: Instructor_ID (PK), First_Name, Last_Name, Contact_Number, Department_ID (FK)</p></div>
+            </section>
+            
+            <section id="classroom_info" class="entity-section hidden">
+                <h2>🚪 CLASSROOM Entity</h2>
+                <div class="data-block"><p>Attributes: Classroom_ID (PK), Room_Number, Building_Name, Floor_Level, Room_Type</p></div>
+            </section>
+
+            <section id="contact_records" class="entity-section hidden">
+                <h2>📞 CONTACT Entity</h2>
+                <div class="data-block"><p>Attributes: Contact_ID (PK), Student_ID (FK), Instructor_ID (FK), Contact_Type, Contact_Detail, Parent_ID (FK)</p></div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Student Portal Project. Professional & Clean Design.</p>
+    </footer>
+
+    <script src="portal.js"></script>
+</body>
+</html>
 
