@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const verifyEmailDisplay = document.getElementById('verify-email-display');
     const body = document.body;
 
-    // --- 1. View Switching Logic ---
+    // --- 1. View Switching Logic (Functionality for changing forms) ---
     function showView(viewId) {
         // Itago lahat ng views
         document.querySelectorAll('.auth-view').forEach(view => {
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Listener para sa mga navigation links (data-view="[login|register|forgot]")
+    // Listener para sa mga navigation links (Forgot, Register, Login)
     authContainer.addEventListener('click', (e) => {
         if (e.target.matches('[data-view]')) {
             e.preventDefault();
@@ -36,27 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.toggle('light-mode'); 
     });
 
-    // --- 3. Registration Success Flow ---
+    // --- 3. Registration Success Flow (Logic para lumabas ang Verification View) ---
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // ** SIMULATED REGISTRATION SUCCESS **
-        // Dito mo ilalagay ang actual code para sa server registration (e.g., Fetch API).
+        // ** SIMULATED SUCCESS ** - Dito magaganap ang actual server communication
         
         // Kunin ang email na ginamit
         const registeredEmail = document.getElementById('reg-email').value;
 
         // Ipakita ang Verification View
-        verifyEmailDisplay.textContent = registeredEmail; // Ipakita ang email sa instruction
-        showView('verify-view'); // I-display ang Verification Form
+        verifyEmailDisplay.textContent = registeredEmail; 
+        showView('verify-view'); // Ang nagpapagana para lumabas ang verification
         
         // I-reset ang register form fields
         registerForm.reset(); 
     });
 
-    // --- 4. Iba pang Form Submissions (Para lang may action) ---
-    document.getElementById('login-form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Login Submitted'); alert('Login submitted!'); });
-    document.getElementById('forgot-form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Forgot Submitted'); alert('Reset link sent!'); });
-    document.getElementById('verify-form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Verification Submitted'); alert('Account Verified!'); });
-    
-});
+    // --- 4. Iba pang Form Submissions (Demo purposes) ---
+    document.getElementById('
