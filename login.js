@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeSwitch = document.getElementById('dark-mode-switch-auth');
     const registerForm = document.getElementById('register-form');
     const verifyEmailDisplay = document.getElementById('verify-email-display');
+    const body = document.body;
 
     // --- 1. View Switching Logic ---
     function showView(viewId) {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Listener para sa mga navigation links (data-view)
+    // Listener para sa mga navigation links (data-view="[login|register|forgot]")
     authContainer.addEventListener('click', (e) => {
         if (e.target.matches('[data-view]')) {
             e.preventDefault();
@@ -31,44 +32,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. Dark Mode Toggle ---
     darkModeSwitch.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode');
-        document.body.classList.toggle('light-mode');
+        body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode'); 
     });
 
-    // --- 3. Registration Success Logic (Para Lumabas ang Verification) ---
+    // --- 3. Registration Success Flow ---
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        // Dito mo ilalagay ang actual registration logic (AJAX/Fetch API)
+        // ** SIMULATED REGISTRATION SUCCESS **
+        // Dito mo ilalagay ang actual code para sa server registration (e.g., Fetch API).
         
-        // For demonstration: Assume registration is successful
+        // Kunin ang email na ginamit
         const registeredEmail = document.getElementById('reg-email').value;
 
-        // **Ito ang mahalagang part:** Ipakita ang Verification View
-        verifyEmailDisplay.textContent = registeredEmail; // Ipakita ang email
-        showView('verify-view'); // Lumabas ang Verification View
+        // Ipakita ang Verification View
+        verifyEmailDisplay.textContent = registeredEmail; // Ipakita ang email sa instruction
+        showView('verify-view'); // I-display ang Verification Form
         
-        // Optional: I-reset ang register form fields
+        // I-reset ang register form fields
         registerForm.reset(); 
     });
 
-    // --- 4. Iba pang Form Submissions (Login, Forgot, Verify) ---
-    document.getElementById('login-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Login attempt initiated...');
-        // Add actual login logic here
-    });
-
-    document.getElementById('forgot-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Password reset link sent...');
-        // Add actual forgot password logic here
-    });
-
-    document.getElementById('verify-form').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Verification code submitted...');
-        // Add actual verification logic here
-    });
+    // --- 4. Iba pang Form Submissions (Para lang may action) ---
+    document.getElementById('login-form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Login Submitted'); alert('Login submitted!'); });
+    document.getElementById('forgot-form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Forgot Submitted'); alert('Reset link sent!'); });
+    document.getElementById('verify-form').addEventListener('submit', (e) => { e.preventDefault(); console.log('Verification Submitted'); alert('Account Verified!'); });
     
 });
