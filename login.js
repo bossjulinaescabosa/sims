@@ -5,9 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('.auth-links a');
     const darkModeSwitch = document.getElementById('dark-mode-switch-auth');
     const body = document.body;
+    const verifyEmailDisplay = document.getElementById('verify-email-display');
 
     // Tiyakin na walang "isLoggedIn" status na naiwan sa sessionStorage kapag nasa login page
     sessionStorage.removeItem('isLoggedIn');
+    
+    // MOCK DATA storage for Verification (real code = '123456')
+    let mockVerificationEmail = '';
 
     // --- Theme Persistence ---
     const savedTheme = localStorage.getItem('theme') || 'light';
@@ -51,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 headerText = 'Create New Account';
             } else if (targetViewId === 'forgot') {
                 headerText = 'Forgot Password';
+            } else if (targetViewId === 'verify') {
+                headerText = 'Account Verification';
             }
             authHeader.textContent = headerText;
             pageTitle.textContent = `${headerText} - Student Portal`;
@@ -68,33 +74,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Form Submission Logic (MOCK) ---
+    // --- 1. Login Submission (MOCK) ---
     document.getElementById('login-form').addEventListener('submit', function(e) {
         e.preventDefault();
         // MOCK LOGIN
         alert('Login Successful! Redirecting to Dashboard...');
-        
-        // SET MOCK SESSION FLAG
         sessionStorage.setItem('isLoggedIn', 'true'); 
-        
         window.location.href = 'dashboard.html'; 
     });
 
+    // --- 2. Registration Submission (NEW FLOW) ---
     document.getElementById('register-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        // MOCK REGISTER: Account created. (No mention of verification code)
+        const email = document.getElementById('reg-email').value;
         
-        // Hindi na kailangan kunin ang email/ID
+        // Save the email for the verification screen
+        mockVerificationEmail = email;
+        verifyEmailDisplay.textContent = email;
+
+        alert(`✅ SUCCESS! Account created. 
+            \n\nA 6-digit verification code has been sent to ${email}. 
+            \n\n(MOCK CODE: 123456)`);
         
-        alert('✅ SUCCESS! Account successfully created. You may now log in.');
+        // Redirect to the new verification view
+        switchView('verify');
+    });
+
+    // --- 3. Verification Submission (MOCK) ---
+    document.getElementById('verify-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const enteredCode = document.getElementById('verify-code').value.trim();
         
-        // Pagkatapos mag-register, bumalik sa Login screen
-        switchView('login');
+        if (enteredCode === '123456') { // Mock verification code
+            alert('🎉 Verification Successful! Your account is now active. Please log in.');
+            // Clear mock data and go to login
+            mockVerificationEmail = '';
+            switchView('login');
+        } else {
+            alert('❌ Error: Invalid verification code. Please try again.');
+        }
+    });
+    
+    // --- 4. Resend Code Link (MOCK) ---
+    document.getElementById('resend-code-link').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (mockVerificationEmail) {
+            alert(`New code sent to ${mockVerificationEmail}. (MOCK CODE: 123456)`);
+        } else {
+            alert('Please register first.');
+            switchView('register');
+        }
     });
 
     document.getElementById('forgot-form').addEventListener('submit', function(e) {
         e.preventDefault();
-        // MOCK RESET: Email sent.
+        // MOCK RESET
         alert('Password reset link sent to your email! Check your inbox.');
         switchView('login');
     });
