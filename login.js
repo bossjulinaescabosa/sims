@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeSwitch = document.getElementById('dark-mode-switch-auth');
     const body = document.body;
 
+    // Tiyakin na walang "isLoggedIn" status na naiwan sa sessionStorage kapag nasa login page
+    sessionStorage.removeItem('isLoggedIn');
+
     // --- Theme Persistence ---
     const savedTheme = localStorage.getItem('theme') || 'light';
     if (savedTheme === 'dark') {
@@ -70,6 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         // MOCK LOGIN: In a real app, authentication happens here.
         alert('Login Successful! Redirecting to Dashboard...');
+        
+        // SET MOCK SESSION FLAG KAPAG SUCCESSFUL ANG LOGIN
+        sessionStorage.setItem('isLoggedIn', 'true'); 
+        
         window.location.href = 'dashboard.html'; 
     });
 
@@ -97,4 +104,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize to login view
     switchView('login');
 });
-
