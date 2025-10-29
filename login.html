@@ -11,7 +11,7 @@
         <header class="auth-header">
             <div class="header-branding">
                 <img src="logo.png" alt="School Logo" class="auth-logo">
-                <h1 id="auth-header">Portal Login</h1>
+                <h1 id="auth-header">Student Portal</h1>
             </div>
             <label class="dark-mode-toggle">
                 <input type="checkbox" id="dark-mode-switch-auth">
@@ -21,74 +21,79 @@
 
         <div id="login-view" class="auth-view active">
             <form id="login-form" class="auth-form">
+                <h2 class="view-title">Login sa Portal</h2>
                 <div class="form-group">
                     <label for="username">Student ID / Email:</label>
-                    <input type="text" id="username" required placeholder="Enter your ID or Email">
+                    <input type="text" id="username" required placeholder="Ipasok ang ID o Email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" required placeholder="Enter your password">
+                    <input type="password" id="password" required placeholder="Ipasok ang password">
                 </div>
-                <button type="submit" class="blue-btn full-width">LOGIN TO PORTAL</button>
+                <button type="submit" class="blue-btn full-width">LOGIN</button>
             </form>
             <div class="auth-links">
-                <a href="#" data-view="forgot">Forgot Password?</a>
+                <a href="#" data-view="forgot">Nakalimutan ang Password?</a>
                 <span>|</span>
-                <a href="#" data-view="register">New Student? Register here</a>
+                <a href="#" data-view="register">Bagong Estudyante? Mag-rehistro dito</a>
             </div>
         </div>
 
         <div id="register-view" class="auth-view hidden">
             <form id="register-form" class="auth-form">
-                <p class="instruction">Fill in your details to create a student account.</p>
+                <h2 class="view-title">Bagong Estudyante</h2>
+                <p class="instruction">Punan ang mga detalye para gumawa ng student account.</p>
                 <div class="form-group">
                     <label for="reg-id">Student ID:</label>
-                    <input type="text" id="reg-id" required placeholder="Your Student ID (e.g., S001)">
+                    <input type="text" id="reg-id" required placeholder="Student ID (e.g., S001)">
                 </div>
                 <div class="form-group">
                     <label for="reg-email">Personal Email:</label>
-                    <input type="email" id="reg-email" required placeholder="Enter your Email">
+                    <input type="email" id="reg-email" required placeholder="Ipasok ang Email">
                 </div>
                 <div class="form-group">
-                    <label for="reg-pass">Create Password:</label>
-                    <input type="password" id="reg-pass" required placeholder="Choose a secure password">
+                    <label for="reg-pass">Gumawa ng Password:</label>
+                    <input type="password" id="reg-pass" required placeholder="Pumili ng secure password">
                 </div>
-                <button type="submit" class="blue-btn full-width">REGISTER ACCOUNT</button>
+                <button type="submit" class="blue-btn full-width">MAG-REHISTRO</button>
             </form>
             <div class="auth-links">
-                <a href="#" data-view="login">Already have an account? Login here</a>
+                <a href="#" data-view="login">May account na? Mag-login dito</a>
             </div>
         </div>
 
         <div id="forgot-view" class="auth-view hidden">
             <form id="forgot-form" class="auth-form">
-                <p class="instruction">Enter your registered email to reset your password.</p>
+                <h2 class="view-title">Nakalimutan ang Password</h2>
+                <p class="instruction">Ipasok ang email para ma-reset ang password.</p>
                 <div class="form-group">
                     <label for="forgot-email">Email:</label>
-                    <input type="email" id="forgot-email" required placeholder="Enter your registered email">
+                    <input type="email" id="forgot-email" required placeholder="Ipasok ang rehistradong email">
                 </div>
-                <button type="submit" class="blue-btn full-width">SEND RESET LINK</button>
+                <button type="submit" class="blue-btn full-width">IPADALA ANG RESET LINK</button>
             </form>
             <div class="auth-links">
-                <a href="#" data-view="login">Back to Login</a>
+                <a href="#" data-view="login">Bumalik sa Login</a>
             </div>
         </div>
-
+        
         <div id="verify-view" class="auth-view hidden">
             <form id="verify-form" class="auth-form">
-                <p class="instruction">We have sent a 6-digit verification code to <strong id="verify-email-display">your email</strong>. Please enter the code below to complete your registration.</p>
+                <h2 class="view-title">I-verify ang Account</h2>
+                <p class="instruction">Nagpadala kami ng 6-digit code sa <strong id="verify-email-display"></strong>. Ipasok ang code para makumpleto ang pag-rehistro.</p>
                 <div class="form-group">
                     <label for="verify-code">Verification Code:</label>
-                    <input type="text" id="verify-code" required placeholder="Enter 6-digit code">
+                    <input type="text" id="verify-code" required placeholder="Ipasok ang 6-digit code">
                 </div>
-                <button type="submit" class="blue-btn full-width">VERIFY ACCOUNT</button>
+                <button type="submit" class="blue-btn full-width">I-VERIFY</button>
             </form>
             <div class="auth-links">
-                <a href="#" data-view="login">Back to Login</a>
+                <a href="#" data-view="login">Bumalik sa Login</a>
                 <span>|</span>
-                <a href="#" id="resend-code-link">Resend Code</a>
+                <a href="#" id="resend-code-link">Ipadala Ulit ang Code</a>
             </div>
         </div>
+        
     </div>
     
     <script src="login.js"></script>
