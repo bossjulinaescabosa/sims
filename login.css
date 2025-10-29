@@ -1,69 +1,147 @@
-/* GLOBAL STYLES & CENTERING THE FORM */
-body, html {
-    height: 100%;
+/* ==================================== */
+/* 1. Global & Page Layout Styles       */
+/* ==================================== */
+:root {
+    /* Variables for colors */
+    --primary-color: #007bff; /* Blue for primary actions/buttons */
+    --secondary-color: #6c757d; /* Gray for secondary text */
+    --light-bg: #f4f7f9; /* Light mode background */
+    --light-card-bg: #ffffff; /* Light mode form background */
+    --dark-bg: #1e293b; /* Dark mode background */
+    --dark-card-bg: #2d3748; /* Dark mode form background */
+    --text-color-light: #333; /* Default text color */
+    --text-color-dark: #f0f0f0; /* Dark mode text color */
+}
+
+body {
+    /* Reset and general styling */
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Same color pa din, light gray background */
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
 }
 
-/* Flexbox para i-sentro ang buong form (vertically at horizontally) */
-.page-container {
+/* Light Mode (Default) */
+.light-mode {
+    background-color: var(--light-bg);
+    color: var(--text-color-light);
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--text-color-dark);
+}
+
+/* Auth Container Centering - Use Flexbox to center the form on the page */
+.auth-container {
     display: flex;
-    justify-content: center; /* Centering Horizontal */
-    align-items: center; /* Centering Vertical */
-    height: 100%;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    min-height: 100vh; /* Ensure it covers the whole viewport height */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* FORM STYLING */
-.login-form {
-    background-color: #ffffff; /* Same color pa din, white box */
+/* ==================================== */
+/* 2. Form Card and Header Styles       */
+/* ==================================== */
+.auth-view {
+    /* Base styling for the form card */
+    background-color: var(--light-card-bg);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 350px; /* Limitahan ang lapad ng form */
+    max-width: 420px; /* Pantay at maayos na lapad ng form */
+    margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
-.login-form h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #333;
+/* Dark Mode card styling */
+.dark-mode .auth-view {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Aayusin ang Spacing at Alignment ng Label at Input */
+.auth-header {
+    /* Layout para sa Logo, Title, at Dark Mode Toggle */
+    display: flex;
+    justify-content: space-between; /* Itulak ang Branding at Toggle sa magkabilang dulo */
+    align-items: center; /* Pantayin ang items sa gitna (vertically) */
+    margin-bottom: 25px; /* Spacing sa ilalim ng header */
+}
+
+.header-branding {
+    /* Layout para sa Logo at Title */
+    display: flex;
+    align-items: center;
+}
+
+.auth-logo {
+    width: 45px; /* Maayos na laki ng logo */
+    height: auto;
+    margin-right: 12px; /* Spacing sa pagitan ng Logo at Title */
+}
+
+#auth-header {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* ==================================== */
+/* 3. Form Elements and Spacing (Key for Alignment) */
+/* ==================================== */
+.auth-form {
+    display: block;
+}
+
 .form-group {
-    margin-bottom: 15px; /* Maayos na spacing sa pagitan ng field groups */
-    display: flex; /* Flexbox sa loob para pantayin ang label at input */
-    flex-direction: column; /* Ihanay ang label at input patayo */
+    margin-bottom: 20px; /* Pantay na spacing sa pagitan ng bawat field group */
 }
 
 .form-group label {
-    margin-bottom: 5px; /* Maliit na spacing sa pagitan ng label at input */
-    font-weight: bold;
-    color: #555;
+    display: block; /* Para ang label ay nasa itaas ng input */
+    margin-bottom: 8px; /* Maayos na spacing sa pagitan ng label at input */
+    font-weight: 600;
+    font-size: 0.95em;
 }
 
 .form-group input {
-    width: 95%; /* Haba ng input field, halos kasing lapad ng form */
-    padding: 10px;
+    width: 100%;
+    padding: 12px 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Mahalaga para hindi lumampas sa width ang padding */
+    border-radius: 6px;
+    box-sizing: border-box; /* Mahalaga para hindi lumabas sa width ang padding */
+    font-size: 1em;
+    transition: border-color 0.3s;
 }
 
-/* Button Styling */
-.login-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff; /* Example Button Color */
+.form-group input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* Dark Mode input styling */
+.dark-mode input {
+    background-color: #4a5568;
+    border-color: #6c757d;
+    color: var(--text-color-dark);
+}
+.dark-mode input::placeholder {
+    color: #a0aec0;
+}
+
+/* Button Styling (blue-btn) */
+.blue-btn {
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 4px;
+    padding: 12px 20px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px; /* Spacing sa taas ng button */
-}
-
-.login-button:hover {
-    background-color: #0056b3;
-}
+    font-size: 1em;
+    font-weight: 600;
+    transition:
